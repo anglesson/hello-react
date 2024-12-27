@@ -11,26 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: "Copy files"
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "."
-        target: /frontend
+      - name: "Download code"
+        uses: actions/checkout@v4
 
-    - name: "Build"
-      uses: appleboy/ssh-action@v1.2.0
-      env:
-        APP: ${{ secrets.APP_NAME }}
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        envs: APP
-        script: |
-          cd /frontend
-          docker build -t $APP .
-          docker run -d -p 80:80 $APP
+      - name: "Copy files"
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "."
+          target: /frontend
+  
+      - name: "Build"
+        uses: appleboy/ssh-action@v1.2.0
+        env:
+          APP: ${{ secrets.APP_NAME }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: APP
+          script: |
+            cd /frontend
+            docker build -t $APP .
+            docker run -d -p 80:80 $APP
