@@ -21,13 +21,16 @@ jobs:
         source: "."
         target: /frontend
 
-    - uses: appleboy/ssh-action@v1.2.0
     - name: "Build"
+      uses: appleboy/ssh-action@v1.2.0
+      env:
+        APP: ${{ secrets.APP_NAME }}
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        envs: APP
         script: |
           cd /frontend
-          docker build -t ${{ secrets.APP_NAME }} .
-          docker run -d -p 80:80 ${{ secrets.APP_NAME }}
+          docker build -t $APP .
+          docker run -d -p 80:80 $APP
