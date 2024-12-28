@@ -17,14 +17,14 @@ jobs:
       - name: "Copy files"
         uses: appleboy/scp-action@v0.1.3
         env:
-          APP_NAME: ${{ secrets.APP_NAME }}-app
+          APP_NAME: ${{ secrets.APP_NAME }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: APP_NAME
           source: "."
-          target: /$APP_NAME
+          target: /$APP_NAME-app
   
       - name: "Build"
         uses: appleboy/ssh-action@v1.2.0
