@@ -39,5 +39,6 @@ jobs:
             docker rm $APP_NAME || true
             docker rmi $APP_NAME || true
             APP_VERSION=$(git tag -l --contains HEAD | tail -n1)
-            docker build -t $APP_NAME:$APP_VERSION .
+            docker build -t $APP_NAME .
+            docker image tag $APP_NAME $APP_NAME:$APP_VERSION
             docker run --name $APP_NAME:$APP_VERSION -d -p 80:80 $APP_NAME
