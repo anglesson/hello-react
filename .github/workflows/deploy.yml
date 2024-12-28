@@ -24,7 +24,7 @@ jobs:
       - name: "Build"
         uses: appleboy/ssh-action@v1.2.0
         env:
-          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_NAME: ${{ vars.APP_NAME }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
