@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: APP_NAME
           script: |
-            cd /frontend
+            cd /$APP_NAME-app
             docker stop $APP_NAME || true
             docker rm $APP_NAME || true
             docker rmi $APP_NAME || true
