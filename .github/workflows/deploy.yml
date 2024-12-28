@@ -24,7 +24,7 @@ jobs:
           target: /frontend
   
       - name: "Build"
-        uses: appleboy/ssh-action@v1.3.0
+        uses: appleboy/ssh-action@v1.2.0
         env:
           APP: ${{ secrets.APP_NAME }}
         with:
