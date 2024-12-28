@@ -24,13 +24,14 @@ jobs:
           target: /frontend
   
       - name: "Build"
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@master
         env:
           APP: ${{ secrets.APP_NAME }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           envs: APP
           script: |
             cd /frontend
