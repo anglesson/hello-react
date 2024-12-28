@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Updated master code... This is a bad practice! :(</h1>
+      <h1>Next version</h1>
     </>
   )
 }
