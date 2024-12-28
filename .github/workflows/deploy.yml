@@ -24,7 +24,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: APP_NAME
           source: "."
-          target: /$APP_NAME-app
+          target: "/$APP_NAME-app"
   
       - name: "Build"
         uses: appleboy/ssh-action@v1.2.0
