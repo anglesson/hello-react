@@ -32,12 +32,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /frontend
-            docker build -t hello-react:latest .
-            docker run --name hello-react-new -d -p 8080:80 hello-react:latest
-            
-            sudo sed -i 's/8080/8081/' /etc/nginx/conf.d/default.conf
-            sudo systemctl reload nginx
-            
-            docker stop hello-react || true 
+            docker stop hello-react || true
             docker rm hello-react || true
-            docker rename hello-react-new hello-react
+            docker rmi hello-react || true
+            docker build -t hello-react .docker run --name hello-react -d -p 80:80 hello-react
