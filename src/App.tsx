@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Wrong version!</h1>
+      <h1>Correct version!</h1>
     </>
   )
 }
