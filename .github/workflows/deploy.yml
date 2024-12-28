@@ -32,6 +32,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /frontend
-            docker build -t hello-react .
             docker stop hello-react
+            docker build -t hello-react .
             docker run --name hello-react -d -p 80:80 hello-react
