@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Next version 5</h1>
+      <h1>Hello to my app!</h1>
     </>
   )
 }

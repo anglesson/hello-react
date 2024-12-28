@@ -9,6 +9,7 @@ const Router: React.FC = () => {
             <Routes>
                 <Route path="/" element={<App/>} />
                 <Route path="/version" element={<Version/>} />
+                <Route path="*" element={<h1>NotFound</h1>} />
             </Routes>
         </BrowserRouter>
     );
