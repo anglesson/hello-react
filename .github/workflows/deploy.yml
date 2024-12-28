@@ -25,15 +25,18 @@ jobs:
   
       - name: "Build"
         uses: appleboy/ssh-action@v1.2.0
+        env:
+          APP_NAME: ${{ secrets.APP_NAME }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: APP_NAME
           script: |
             cd /frontend
-            docker stop hello-react || true
-            docker rm hello-react || true
-            docker rmi hello-react || true
-            docker build -t hello-react .
-            docker run --name hello-react -d -p 80:80 hello-react
+            docker stop $APP_NAME || true
+            docker rm $APP_NAME || true
+            docker rmi $APP_NAME || true
+            docker build -t $APP_NAME .
+            docker run --name $APP_NAME -d -p 80:80 $APP_NAME
