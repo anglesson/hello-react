@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello to my app!</h1>
+      <h1>Hello to my new version app!</h1>
     </>
   )
 }
